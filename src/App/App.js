@@ -27,8 +27,8 @@ class App extends Component {
   componentDidMount() {
     try{
     Promise.all([
-      fetch('http://localhost:9090/notes'),
-      fetch('http://localhost:9090/folders')
+      fetch('https://noteful-db.herokuapp.com/notes'),
+      fetch('https://noteful-db.herokuapp.com/folders')
     ])
       .then(([notesRes, foldersRes]) => {
         if (!notesRes.ok)

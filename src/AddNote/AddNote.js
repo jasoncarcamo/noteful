@@ -21,7 +21,7 @@ export default class AddNote extends Component {
     }
 
     try{
-      fetch('http://localhost:9090/notes', {
+      fetch('https://noteful-db.herokuapp.com/notes', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'

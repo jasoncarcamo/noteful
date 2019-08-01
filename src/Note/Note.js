@@ -16,7 +16,7 @@ export default class Note extends React.Component {
     const noteId = this.props.id
 
     try{
-      fetch(`http://localhost:9090/notes/${noteId}`, {
+      fetch(`https://noteful-db.herokuapp.com/notes/${noteId}`, {
         method: 'DELETE',
         headers: {
           'content-type': 'application/json'
