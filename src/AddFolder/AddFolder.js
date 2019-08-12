@@ -2,6 +2,7 @@ import React from 'react'
 import NotefulForm from '../NotefulForm/NotefulForm'
 import ApiContext from '../ApiContext'
 import './AddFolder.css'
+import uuid from 'uuid/v4';
 
 
 class AddFolder extends React.Component {
@@ -15,6 +16,7 @@ class AddFolder extends React.Component {
   handleSubmit = e => {
     e.preventDefault()
     const folder = {
+      id: uuid(),
       name: e.target['folder-name'].value
     }
 
@@ -32,8 +34,8 @@ class AddFolder extends React.Component {
         return res.json()
       })
       .then(folder => {
-        this.context.addFolder(folder)
-        this.props.history.push(`/folder/${folder.id}`)
+        this.context.addFolder(folder[0])
+        this.props.history.push(`/folder/${folder[0].id}`)
       })
       }catch(error){
         console.error(error)

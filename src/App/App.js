@@ -86,6 +86,10 @@ class App extends Component {
     }
   }
 
+  updateFolders = (folders) =>{
+    this.setState({folders})
+  }
+
   handleDeleteNote = noteId => {
     try{
       this.setState({
@@ -158,6 +162,7 @@ class App extends Component {
       folders: this.state.folders,
       addFolder: this.handleAddFolder,
       addNote: this.handleAddNote,
+      updateFolders: this.updateFolders,
       deleteNote: this.handleDeleteNote,
     }
 

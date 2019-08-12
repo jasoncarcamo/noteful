@@ -43,3 +43,18 @@
   float: right;
   font-size: 10px;
 }
+
+
+#delete_folder{
+  display: block;
+  width: 50%;
+  height: 2em;
+  color: white;
+  margin: -.5em 0 1em 45%;
+  background-color: rgb(77, 96, 204);
+  border: none;
+}
+
+#delete_folder:hover{
+  background-color: red;
+}

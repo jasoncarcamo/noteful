@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import NotefulForm from '../NotefulForm/NotefulForm'
 import ApiContext from '../ApiContext'
 import './AddNote.css'
+import uuid from 'uuid/v4';
 
 export default class AddNote extends Component {
   static defaultProps = {
@@ -14,9 +15,10 @@ export default class AddNote extends Component {
   handleSubmit = e => {
     e.preventDefault()
     const newNote = {
+      id: uuid(),
       name: e.target['note-name'].value,
       content: e.target['note-content'].value,
-      folderId: e.target['note-folder-id'].value,
+      folderid: e.target['note-folder-id'].value,
       modified: new Date(),
     }
 
@@ -34,8 +36,8 @@ export default class AddNote extends Component {
           return res.json()
         })
         .then(note => {
-          this.context.addNote(note)
-          this.props.history.push(`/folder/${note.folderId}`)
+          this.context.addNote(note[0])
+          this.props.history.push(`/note/${note[0].id}`)
         })
       }
       catch(error){

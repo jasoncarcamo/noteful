@@ -8,6 +8,24 @@ import './NoteListNav.css'
 
 export default class NoteListNav extends React.Component {
   static contextType = ApiContext;
+  
+  handleFolderDelete = (e) => {
+    e.preventDefault();
+    const className = e.target.className;
+    console.log(e.target.className)
+    return fetch(`https://noteful-db.herokuapp.com/folders/${className}`, {
+      method: "DELETE",
+      headers: {
+        'content-type': "application/json"
+      }
+    })
+    .then(res => {
+      const {folders = []} = this.context;
+      const newFolders = folders.filter(folder => folder.id !== className);
+      this.context.updateFolders(newFolders);
+
+    });
+  }
 
   render() {
     const { folders=[], notes=[] } = this.context
@@ -25,6 +43,7 @@ export default class NoteListNav extends React.Component {
                 </span>
                 {folder.name}
               </NavLink>
+              <button id="delete_folder" className={folder.id} type="button" onClick={this.handleFolderDelete}>Delete</button>
             </li>
           )}
         </ul>
