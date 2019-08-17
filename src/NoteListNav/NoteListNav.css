@@ -5,6 +5,21 @@
   padding: 0;
 }
 
+
+#delete_folder{
+  display: block;
+  width: 4em;
+  height: 2em;
+  color: white;
+  margin: -.5em 0 1.5em auto;
+  background-color: rgb(77, 96, 204);
+  border: none;
+}
+
+#delete_folder:hover{
+  background-color: red;
+}
+
 .NoteListNav__button-wrapper {
   margin: 0 0 0 auto;
   max-width: 180px;
@@ -42,19 +57,4 @@
   display: block;
   float: right;
   font-size: 10px;
-}
-
-
-#delete_folder{
-  display: block;
-  width: 50%;
-  height: 2em;
-  color: white;
-  margin: -.5em 0 1em 45%;
-  background-color: rgb(77, 96, 204);
-  border: none;
-}
-
-#delete_folder:hover{
-  background-color: red;
 }

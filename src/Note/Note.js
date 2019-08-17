@@ -14,7 +14,6 @@ export default class Note extends React.Component {
   handleClickDelete = e => {
     e.preventDefault()
     const noteId = this.props.id
-    console.log(noteId)
     try{
       fetch(`https://noteful-db.herokuapp.com/notes/${noteId}`, {
         method: 'DELETE',

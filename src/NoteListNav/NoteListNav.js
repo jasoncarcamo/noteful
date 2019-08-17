@@ -12,7 +12,7 @@ export default class NoteListNav extends React.Component {
   handleFolderDelete = (e) => {
     e.preventDefault();
     const className = e.target.className;
-    console.log(e.target.className)
+    
     return fetch(`https://noteful-db.herokuapp.com/folders/${className}`, {
       method: "DELETE",
       headers: {
