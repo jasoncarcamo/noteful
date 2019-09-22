@@ -8,6 +8,31 @@ import './NoteListNav.css'
 
 export default class NoteListNav extends React.Component {
   static contextType = ApiContext;
+
+  renderFolders = ()=>{
+    
+    const { folders=[], notes=[] } = this.context
+
+    if(folders.length === 0){
+      return <p className="no-folders">Loading...</p>
+    } else {
+    
+      return folders.map(folder =>
+        <li key={folder.id}>
+          <NavLink
+            className='NoteListNav__folder-link'
+            to={`/folder/${folder.id}`}
+          >
+            <span className='NoteListNav__num-notes'>
+              {countNotesForFolder(notes, folder.id)}
+            </span>
+            {folder.name}
+          </NavLink>
+          <button id="delete_folder" className={folder.id} type="button" onClick={this.handleFolderDelete}>Delete</button>
+        </li>
+      );
+    }; 
+  }
   
   handleFolderDelete = (e) => {
     e.preventDefault();
@@ -28,24 +53,11 @@ export default class NoteListNav extends React.Component {
   }
 
   render() {
-    const { folders=[], notes=[] } = this.context
+
     return (
       <div className='NoteListNav'>
         <ul className='NoteListNav__list'>
-          {folders.map(folder =>
-            <li key={folder.id}>
-              <NavLink
-                className='NoteListNav__folder-link'
-                to={`/folder/${folder.id}`}
-              >
-                <span className='NoteListNav__num-notes'>
-                  {countNotesForFolder(notes, folder.id)}
-                </span>
-                {folder.name}
-              </NavLink>
-              <button id="delete_folder" className={folder.id} type="button" onClick={this.handleFolderDelete}>Delete</button>
-            </li>
-          )}
+          {this.renderFolders()}
         </ul>
         <div className='NoteListNav__button-wrapper'>
           <CircleButton

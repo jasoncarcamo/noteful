@@ -25,6 +25,7 @@ class App extends Component {
   }
   
   componentDidMount() {
+    
     try{
     Promise.all([
       fetch('https://noteful-db.herokuapp.com/notes'),

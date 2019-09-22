@@ -1,4 +1,10 @@
 
+.no-folders{
+  width: 30%;
+  margin-left: auto;
+  color: white;
+}
+
 .NoteListNav__list {
   list-style-type: none;
   margin: 130px 0 0;
